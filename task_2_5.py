@@ -61,19 +61,17 @@ def check_five_max_elements(list_in: list) -> list:
     """Проверяет элементы входного списка вещественных чисел и возвращает
         список из ПЯТИ максимальных значений"""
     # пишите реализацию здесь
-    list_out = []
-    _ = [my_list[0]]
-    for elem in my_list:                  # выберает 5 наибольших значений
-        if _[0] < elem:
-            _.insert(0,elem)
-    del _[5:len(_)]
-    # если нельзя использовать sort() то реверс "в ручную"
-    n = len(_)-1
-    while n != -1:
-        _.append(_[n])
-        n -= 1
-    del _[0:int(len(_)/2)]
-    list_out = _
+    print('*',list_in)
+    n = 0
+    while n != len(list_in)-1:      #сортирует список и взвращает список из пяти самых больших элементов по возрастанию
+        if list_in[n] > list_in[n+1]:
+            list_in[n], list_in[n+1] = list_in[n+1], list_in[n]
+            n = 0
+        else:
+            n += 1
+            continue
+    del list_in[:-5]
+    list_out = list_in
     return  list_out
 
 
