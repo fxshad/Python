@@ -5,9 +5,9 @@ def convert_list_in_str(list_in: list) -> str:
     # пишите реализацию своей программы здесь
     str_out = ''
     for i in list_in:
-        if ord(i[0]) >= 48 and ord(i[0])<=57  and len(i) == 1: #проверка на одноразрядность
+        if (ord(i[0]) >= 48 and ord(i[0])<=57)  and len(i) == 1: #проверка на одноразрядность
             i = f'"0{i}"'
-        if ord(i[0]) == 43 or ord(i[0]) == 45: #проверка на присутствие знака
+        if (ord(i[0]) == 43 or ord(i[0]) == 45) and len(i) == 2: #проверка на присутствие знака
             i = f'"{i[0]}0{i[1]}"'
         if ord(i[0]) >= 48 and ord(i[0])<=57:  #добавление к остальным числам ковычек
             i = f'"{i}"'
@@ -15,7 +15,7 @@ def convert_list_in_str(list_in: list) -> str:
     return str_out
 
 
-my_list = ['в', '05', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
 
 result = convert_list_in_str(my_list)
 print(result)
