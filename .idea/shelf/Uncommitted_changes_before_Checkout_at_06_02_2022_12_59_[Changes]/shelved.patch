@@ -1,0 +1,290 @@
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1643807112760)
++++ b/.idea/.gitignore	(date 1643807112760)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: Elagin_Serg_dz_3/task_3_3.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Elagin_Serg_dz_3/task_3_3.py b/Elagin_Serg_dz_3/task_3_3.py
+new file mode 100644
+--- /dev/null	(date 1643980527446)
++++ b/Elagin_Serg_dz_3/task_3_3.py	(date 1643980527446)
+@@ -0,0 +1,28 @@
++def thesaurus(*args) -> dict:
++    # пишите свою реализацию здесь
++    global dict_for_global             # исключительно для вывода словаря в вертикальном формате!!!
++    dict_out = {}
++    name_list = list(args)             # создать список входящих имен
++    name_list.sort()
++    for i in name_list:
++        dict_out.setdefault(i[0], [i]) # создать "каркас" словаря
++    for i in dict_out:                 # взять ключ
++        for n in name_list:            # взять имя из списка
++            if n in dict_out[i]:       # есть ли имя в словаре?
++                continue               # если нет, не добавит
++            elif n[0] != i:            # ключ и первая буква имени совпадает?
++                continue               # если нет, не добавит
++            else:
++                dict_out[i].append(n)  # добавить имя
++    dict_for_global = dict_out
++    dict_out = dict_out  # результирующий словарь значений
++    return dict_out
++
++
++print(thesaurus("Ярослав", "Иван", "Иван", "Иван", "Мария", "Петр", "Илья", "Алексей", "Владимир", "Виктор", "Варвара", "Вадим", "Анатолий", "Михаил", "Светлана", "Игорь", "Олег"))
++
++for k, v in dict_for_global.items():
++    print(k, v)
++
++print('\n\nEnd')
++
+Index: Elagin_Serg_dz_3/еее
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Elagin_Serg_dz_3/еее b/Elagin_Serg_dz_3/еее
+new file mode 100644
+--- /dev/null	(date 1644059902896)
++++ b/Elagin_Serg_dz_3/еее	(date 1644059902896)
+@@ -0,0 +1,17 @@
++
++#Реализовать функцию get_jokes(), возвращающую n шуток, сформированных из трех случайных слов, взятых из трёх списков (по одному из каждого):
++
++
++
++
++#Например:
++
++#>>> get_jokes(2)
++#["лес завтра зеленый", "город вчера веселый"]
++#Документировать код функции.
++
++#Сможете ли вы добавить еще один аргумент — флаг, разрешающий или запрещающий повторы слов в шутках (когда каждое слово можно использовать только в одной шутке)?
++#Сможете ли вы сделать аргументы именованными?
++
++
++
+Index: Elagin_Serg_dz_3/task_3_5.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Elagin_Serg_dz_3/task_3_5.py b/Elagin_Serg_dz_3/task_3_5.py
+new file mode 100644
+--- /dev/null	(date 1644073192186)
++++ b/Elagin_Serg_dz_3/task_3_5.py	(date 1644073192186)
+@@ -0,0 +1,65 @@
++import random
++
++
++
++nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
++adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
++adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий", "печальный", "быстрый"]
++
++
++def get_jokes(count: int) -> list:
++    """Возвращает список шуток в количестве count"""
++    # пишите реализацию своей программы здесь
++    list_out = []
++    for i in range(count):
++        jok_str = ''
++        jok_word = random.choice(nouns)
++        jok_str += jok_word + ' '
++        jok_word = random.choice(adverbs)
++        jok_str += jok_word + ' '
++        jok_word = random.choice(adjectives)
++        jok_str += jok_word
++        list_out.append(jok_str)
++
++    list_out = list_out  #["здесь собранные шутки"]
++    return list_out
++
++
++print(get_jokes(2))
++print(get_jokes(10))
++
++
++print("\n")                                                      ##### документирование, флаг и именованные аргументы
++def get_jokes_adv(count) -> list:
++     # пишите реализацию здесь
++     list_out = []
++
++     if count > min(len(nouns), len(adverbs), len(adjectives)):
++         count = min(len(nouns), len(adverbs), len(adjectives))
++     if count < 1:
++         count = 0
++     idx = 1
++     list_out.extend(random.sample(nouns, k=count, counts=None))
++     for adv in random.sample(adverbs, k=count, counts=None):
++         list_out.insert(idx, adv)
++         idx += 2
++     idx = 2
++     for adj in random.sample(adjectives, k=count, counts=None):
++         list_out.insert(idx, adj)
++         idx += 3
++
++     for i in range(0, len(list_out)):
++         pass
++     return list_out
++
++print(get_jokes_adv(66))
++
++
++
++m = ['Izi', 'Pizi', 'Mini', 'Top']
++
++
++s = ""
++s = ''+' '.join(m)
++m.insert(0, s)
++print(m)
+\ No newline at end of file
+Index: Elagin_Serg_dz_3/task_3_1.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Elagin_Serg_dz_3/task_3_1.py b/Elagin_Serg_dz_3/task_3_1.py
+new file mode 100644
+--- /dev/null	(date 1644061983336)
++++ b/Elagin_Serg_dz_3/task_3_1.py	(date 1644061983336)
+@@ -0,0 +1,26 @@
++def num_translate_adv(value: str) -> str:
++    """переводит числительное с английского на русский """
++    # реализуйте здесь, где хранить необходимые исходные данные определитесь самостоятельно
++    if value.lower() in num_lib:
++        if value.istitle():
++            str_out = num_lib.get(value.lower())
++            str_out = str_out.title()
++        else:
++            str_out = num_lib.get(value)
++    else:
++        str_out = None
++    str_out = str_out  #"в этой переменной должен оказаться результат перевода"
++    return str_out
++
++
++num_lib = {   'zero': 'ноль',  'one' : 'один',   'two' : 'два', 'three': 'три', 'four': 'четыре', 'five':'пять', 'six':'шесть', 'seven':'семь', 'eight': 'восемь', 'nine': 'девять', 'ten':'десять'
++}
++
++print(num_translate_adv("one"))
++print(num_translate_adv("eight"))
++
++print(num_translate_adv("Ten"))
++print(num_translate_adv("thirteen"))
++print(num_translate_adv("Sixteen"))
++
++print('\n\nEnd')
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1643807152085)
++++ b/.idea/inspectionProfiles/profiles_settings.xml	(date 1643807152085)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1643969698691)
++++ b/.idea/misc.xml	(date 1643969698691)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (pythonProject)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1643807152051)
++++ b/.idea/vcs.xml	(date 1643807152051)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1643807152029)
++++ b/.idea/modules.xml	(date 1643807152029)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/DZ.iml" filepath="$PROJECT_DIR$/.idea/DZ.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Python
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision 6dad9aa4a19b59aa510f4b1e4596658b41204a7f)
++++ b/README.md	(date 1643978749336)
+@@ -1,1 +1,0 @@
+-# Python
+\ No newline at end of file
+Index: .idea/DZ.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/DZ.iml b/.idea/DZ.iml
+new file mode 100644
+--- /dev/null	(date 1643969698668)
++++ b/.idea/DZ.iml	(date 1643969698668)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="jdk" jdkName="Python 3.9 (pythonProject)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
