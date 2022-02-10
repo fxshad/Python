@@ -1,0 +1,106 @@
+PS F:\DZ> pip freeze
+altgraph==0.17
+distlib==0.3.4
+filelock==3.4.2
+future==0.18.2
+pefile==2019.4.18
+platformdirs==2.4.1
+pyinstaller==4.2
+pyinstaller-hooks-contrib==2021.1
+pywin32-ctypes==0.2.0
+six==1.16.0
+virtualenv==20.13.1
+PS F:\DZ>                             #Пакет Pillow отсутствует
+
+
+
+PS F:\DZ> pip install pillow
+Collecting pillow
+  Using cached Pillow-9.0.1-cp39-cp39-win_amd64.whl (3.2 MB)
+Installing collected packages: pillow
+Successfully installed pillow-9.0.1
+PS F:\DZ> pip freeze
+altgraph==0.17
+distlib==0.3.4
+filelock==3.4.2
+future==0.18.2
+pefile==2019.4.18
+Pillow==9.0.1
+platformdirs==2.4.1
+pyinstaller==4.2
+pyinstaller-hooks-contrib==2021.1
+pywin32-ctypes==0.2.0
+six==1.16.0
+virtualenv==20.13.1
+PS F:\DZ>                                         # Pillow установлен
+
+
+PS F:\DZ> python -m venv new_virt
+PS F:\DZ> dir
+
+
+    Каталог: F:\DZ
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07.02.2022     19:24                .idea
+d-----        06.02.2022     15:56                Elagin_Serg_dz_3
+d-----        07.02.2022     19:07                Elagin_Serg_dz_4
+d-----        07.02.2022     19:57                new_virt         #создали новое ВО
+d-----        07.02.2022     19:21                ve
+-a----        07.02.2022     19:27              0 main.py
+-a----        06.02.2022     13:01              8 README.md
+-a----        07.02.2022     19:56            848 task_4_1
+
+
+PS F:\DZ>
+
+
+
+PS F:\DZ> new_virt\Scripts\activate.bat
+PS F:\DZ> cd new_virt
+PS F:\DZ\new_virt> new_virt\Scripts\activate.bat
+new_virt\Scripts\activate.bat : Не удалось загрузить модуль "new_virt". Для получения дополнительных сведений выполните команду "Import-Module new_virt".
+строка:1 знак:1
++ new_virt\Scripts\activate.bat
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (new_virt\Scripts\activate.bat:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CouldNotAutoLoadModule
+
+PS F:\DZ\new_virt>
+
+F:\DZ>new_virt\Scripts\activate.bat
+
+(new_virt) F:\DZ>deactivate
+F:\DZ>new_virt\Scripts\activate.bat
+
+(new_virt) F:\DZ>                                     #удалось активировать только через CMD
+
+
+
+(new_virt) F:\DZ>pip freeze
+
+(new_virt) F:\DZ>pip install pillow==9.0.0
+Collecting pillow==9.0.0
+  Using cached Pillow-9.0.0-cp39-cp39-win_amd64.whl (3.2 MB)
+Installing collected packages: pillow
+Successfully installed pillow-9.0.0
+WARNING: You are using pip version 20.2.3; however, version 22.0.3 is available.
+You should consider upgrading via the 'f:\dz\new_virt\scripts\python.exe -m pip install --upgrade pip' command.
+
+(new_virt) F:\DZ>pip freeze
+Pillow==9.0.0
+
+(new_virt) F:\DZ>                          #установили pillow 9.0.0
+
+
+(new_virt) F:\DZ>deactivate
+F:\DZ>                                     #деактивировали
+
+
+
+
+
+
+
