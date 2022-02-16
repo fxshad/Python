@@ -16,9 +16,12 @@ def get_parse_attrs(line: str) -> tuple:
 if __name__ == '__main__':
     list_out = list()
     with open('nginx_logs.txt', 'r', encoding='utf-8') as fr:
-        for line in fr.readlines():# передавайте данные в функцию и наполняйте список list_out кортежами
-            line = get_parse_attrs(line)
-            list_out.append(line)
+        while True:
+            chunk = fr.readlines(256)
+            for line in chunk:# передавайте данные в функцию и наполняйте список list_out кортежами
+                line =get_parse_attrs(line)
+                list_out.append(line)
+            if not chunk:
+                break
     pprint(list_out)
-    """добавил памяти для консоли по совету из чата, является ли это верным решением?"""
     print(f'\n\nEnd')
